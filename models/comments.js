@@ -1,20 +1,11 @@
 export default (sequelize, DataTypes) => {
     const Comments = sequelize.define(
         'Comments',{
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true
-            },
             comment: {
                 type: DataTypes.STRING(255),
                 allowNull: false
             },
-            PostId: {
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
-            UserId: {
+            user_id: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
@@ -30,10 +21,6 @@ export default (sequelize, DataTypes) => {
         Comments.belongsTo(models.Users,{
             foreignKey: 'UserId',
             as: 'user'
-        })
-        Comments.belongsTo(models.Posts,{
-            foreignKey:'PostId',
-            as: 'post'
         })
     }
     return Comments
