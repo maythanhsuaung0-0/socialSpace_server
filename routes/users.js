@@ -15,8 +15,9 @@ usersRouter.get("/", async (req, res) => {
   res.json(users);
 });
 
-usersRouter.get("/:id", async (req, res) => {
-  const user = await db.Users.findByPk(req.params.id);
+usersRouter.post("/getUserById", async (req, res) => {
+  const id = req.body.id;
+  const user = await db.Users.findByPk(id);
   if (user) {
     res.json(user);
   } else {

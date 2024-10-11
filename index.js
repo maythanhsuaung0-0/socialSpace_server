@@ -10,7 +10,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-db.sequelize.sync({
+db.sequelize.sync({ // make the database in sync with the changes in the models
     alter: true
 }).then(()=>{
     const port = process.env.APP_PORT ;
@@ -31,3 +31,6 @@ app.use('/users',usersRouter);
 
 import postsRouter from './routes/posts.js';
 app.use('/posts',postsRouter);
+
+import likeRouter from './routes/likes.js'
+app.use('/likes',likeRouter)
